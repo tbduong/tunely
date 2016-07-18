@@ -6,7 +6,7 @@ var db = require("./models");
 var albumsList =[
   // put data here!
 ];
-
+//
 db.Album.remove({}, function(err, albums){
 
   db.Album.create(albumsList, function(err, albums){
@@ -15,5 +15,5 @@ db.Album.remove({}, function(err, albums){
     console.log("created", albums.length, "albums");
     process.exit();
   });
-
+  //
 });
