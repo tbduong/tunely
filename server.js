@@ -14,11 +14,11 @@ app.use('/vendor', express.static(__dirname + '/bower_components'));
 
 var controllers = require('./controllers');
 /**********
- * ROUTES *
- **********/
+* ROUTES *
+**********/
 /*
- * HTML Endpoints
- */
+* HTML Endpoints
+*/
 
 app.get('/', function homepage (req, res) {
   res.sendFile(__dirname + '/views/index.html');
@@ -26,14 +26,16 @@ app.get('/', function homepage (req, res) {
 
 
 /*
- * JSON API Endpoints
- */
+* JSON API Endpoints
+*/
 
-app.get('/api', controllers.api.index);
+app.get('/api',controllers.api.index);
+
+app.get('/api/albums',controllers.albums.index);
 
 /**********
- * SERVER *
- **********/
+* SERVER *
+**********/
 
 // listen on port 3000
 app.listen(process.env.PORT || 3000, function () {
