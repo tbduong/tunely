@@ -29,10 +29,9 @@ app.get('/', function homepage (req, res) {
 * JSON API Endpoints
 */
 
-app.get('/api',controllers.api.index);
+app.get('/api',controllers.api.index); //path to api json "library"
 
-app.get('/api/albums',controllers.albums.index);
-
+app.get('/api/albums',controllers.albums.index); //path to album json "library"
 /**********
 * SERVER *
 **********/

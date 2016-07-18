@@ -45,6 +45,19 @@ $(document).ready(function() {
   });
 });
 
+$.get('api/albums', onSuccess);
+
+function onSuccess(json) {
+  console.log(json);
+    json.forEach(function(album){ //takes each json passed through (from the albums controller) and renders it through the function one by one
+        renderAlbum(album);
+    });
+}
+
+
+
+
+
 
 // this function takes a single album and renders it to the page
 function renderAlbum(album) {
