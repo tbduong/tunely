@@ -35,10 +35,12 @@ sampleAlbums.push({
 /* end of hard-coded data */
 
 
-
-
 $(document).ready(function() {
   console.log('app.js loaded!');
+  $albumsList = $('.album');
+
+
+
 });
 
 
@@ -48,5 +50,6 @@ $(document).ready(function() {
 // this function takes a single album and renders it to the page
 function renderAlbum(album) {
   console.log('rendering album:', album);
+
 
 }
