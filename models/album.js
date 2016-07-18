@@ -8,7 +8,6 @@ var AlbumSchema = new Schema({
     genres: [String]
 });
 
-
 var Album = mongoose.model('Album', AlbumSchema);
 
 module.exports =  Album;
