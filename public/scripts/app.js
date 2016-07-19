@@ -23,17 +23,16 @@ $(document).ready(function() {
 
   //create new albumEntry
   $('#newAlbumForm').on('submit', function(e){
-    var formData = $(this).serialize();
+    var formData = $(this).serialize(); //creates querystring
     console.log("new entry!", formData);
     e.preventDefault();
+    $.post('/api/albums', formData, function(album){
+      $(this).trigger('reset');
+      renderAlbum(album);
+      console.log("!!!!" + album);
+    });
+      $('#newAlbumForm').val(''); //clears form
   });
-  //it posts
-  var formData = $(this).serialize();
-  $.post('/api/albums', formData, function(album){
-    console.log("!!!!" + album);
-    $('#album-form input').val(''); //clears form
-    $(this).trigger("reset");
-});
 
   $.get('/api/albums', onSuccess);
   function onSuccess(json) {
