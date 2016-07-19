@@ -13,11 +13,20 @@ function index(req, res) {
 }
 
 function create(req, res) {
-db.Album.create(req.body, function(err, album){
+//   var genres = req.body.genres.split(',').map(function(item) { return item.trim(); } );
+// req.body.genres = genres; SOLUTIONS BRANCH maybe.
+  var cleanGenres = req.body.genres.split(',');
+      cleanGenres = cleanGenres.map(function (word) {
+    return word.trim();
+  });
+
+  var newAlbum = req.body;
+  newAlbum.genres = cleanGenres;
+  db.Album.create(newAlbum, function(err, album){
     if (err) { console.log('!!!!ERROR!!!!', err);}
-        console.log("YAY, NEW ALBUM");
-        res.json(album);
-    });
+      console.log("YAY, NEW ALBUM", album);
+      res.json(album);
+  });
 }
 
 function show(req, res) {
