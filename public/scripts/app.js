@@ -11,7 +11,6 @@ var sampleAlbums = [];
 /* hard-coded data! */
 
 /* end of hard-coded data */
-
 $(document).ready(function() {
   console.log('app.js loaded!');
   var albumHtml = $('#album-template').html();
@@ -20,6 +19,14 @@ $(document).ready(function() {
   sampleAlbums.forEach(function(event){
     renderAlbum(event);
   });
+
+  $('#albums').on('click','.add-song', function(e){
+      console.log('add song button clicked!');
+      var id = $(this).closest('.album').data('album-id');
+      console.log('id', id);
+      $('#songModal').data('album-id', id);
+      $('#songModal').modal();
+});
 
   //create new albumEntry
   $('#newAlbumForm').on('submit', function(e){
@@ -42,6 +49,10 @@ $(document).ready(function() {
     });
   }
 });
+
+
+
+
 // this function takes a single album and renders it to the page
 function renderAlbum(album) {
   var html = templateFunction(album);
