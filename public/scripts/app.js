@@ -17,20 +17,32 @@ $(document).ready(function() {
   var albumHtml = $('#album-template').html();
   // console.log(albumHtml);
   templateFunction = Handlebars.compile(albumHtml);
-  sampleAlbums.forEach(function(e){
-    renderAlbum(e);
+  sampleAlbums.forEach(function(event){
+    renderAlbum(event);
   });
+
+  //create new albumEntry
+  $('#newAlbumForm').on('submit', function(e){
+    var formData = $(this).serialize();
+    console.log("new entry!", formData);
+    e.preventDefault();
+  });
+  //it posts
+  var formData = $(this).serialize();
+  $.post('/api/albums', formData, function(album){
+    console.log("!!!!" + album);
+    $('#album-form input').val(''); //clears form
+    $(this).trigger("reset");
 });
 
-$.get('api/albums', onSuccess);
-
-function onSuccess(json) {
-  console.log(json);
+  $.get('/api/albums', onSuccess);
+  function onSuccess(json) {
+    console.log(json);
     json.forEach(function(album){ //takes each json passed through (from the albums controller) and renders it through the function one by one
-        renderAlbum(album);
+      renderAlbum(album);
     });
-}
-
+  }
+});
 // this function takes a single album and renders it to the page
 function renderAlbum(album) {
   var html = templateFunction(album);

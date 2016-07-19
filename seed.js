@@ -29,7 +29,6 @@ var albumsList =[
     releaseDate: '1996, November 5',
     genres: [ 'country', 'rock' ]
   }
-
   // put data here!
 ];
 //

@@ -13,8 +13,15 @@ function index(req, res) {
 }
 
 function create(req, res) {
-  // FILL ME IN !
+  var newAlbumEntry = new db.Album({
+      artistName: req.body.artistName,
+      name: req.body.name,
+      releaseDate: req.body.releaseDate,
+      genres: req.body.genres
+  });
+  console.log("NEW ENTRY!!!" + newAlbumEntry);
 }
+
 
 function show(req, res) {
   // FILL ME IN !

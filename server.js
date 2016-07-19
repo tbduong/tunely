@@ -32,6 +32,8 @@ app.get('/', function homepage (req, res) {
 app.get('/api',controllers.api.index); //path to api json "library"
 
 app.get('/api/albums',controllers.albums.index); //path to album json "library"
+
+app.post('/api/albums', controllers.albums.create); //path to album json "library"
 /**********
 * SERVER *
 **********/
