@@ -19,7 +19,7 @@ function create(req, res){
       //now we have to save the new song data by saving these changes to that album
       foundAlbum.save(function(err, savedAlbum){
         if (err) {console.log("ERROR! DID NOT SAVE NEW SONG DATA INTO ALBUM");}
-          console.log("NEW SONG CREATED:" + newSong);
+          console.log("NEW SONG ADDED:" + newSong);
           res.json(newSong);
       });
 
