@@ -30,7 +30,12 @@ function create(req, res) {
 }
 
 function show(req, res) {
-  // FILL ME IN !
+  var albumId = req.params.album_id;
+  db.Album.findById(albumId, function(err, foundAlbum){
+      if (err) {console.log("!! ERROR !! Could NOT find album");}
+      console.log("!! FOUND album:" + foundAlbum);
+      res.json(foundAlbum); //returns json 
+  });
 }
 
 function destroy(req, res) {
